@@ -7,10 +7,13 @@ let finishedGame;
 // Создание страницы с выбором покемонов
 makeMainPage();
 
-// Выбор конкретного покемона
-const pokemonsToChoose = document.querySelectorAll( '.choose-item' );
+const  headerText = document.querySelector( '.header' );
+headerText.addEventListener( "click", () => { window.location = 'index.html' });
+addMainListeners();
 
-if ( pokemonsToChoose.length !== 0 ) {
+function addMainListeners() {
+    // Выбор конкретных покемонов
+    const pokemonsToChoose = document.querySelectorAll( '.choose-item' );
     pokemonsToChoose[0].addEventListener( "click", function(){ choosePokemon(pokemonsToChoose[0])} );
     pokemonsToChoose[1].addEventListener( "click", function(){ choosePokemon(pokemonsToChoose[1])} );
     pokemonsToChoose[2].addEventListener( "click", function(){ choosePokemon(pokemonsToChoose[2])} );
@@ -18,9 +21,6 @@ if ( pokemonsToChoose.length !== 0 ) {
     const readyButton = document.querySelector( '.ready-btn' );
     readyButton.addEventListener( "click", initGame);
 }
-
-const  headerText = document.querySelector( '.header' );
-headerText.addEventListener( "click", () => { window.location = 'index.html' });
 
 function addListeners() {
 	document.querySelector('#attack-1').addEventListener('click', attack1);
@@ -110,6 +110,8 @@ function initGame() {
         addListeners();
     } else {
         console.log('Not enough pokemons');
+        let errText = document.querySelector('.error');
+        errText.textContent = "Not enough pokémons! You need just 2 pokémons";
     }
 }
 
@@ -153,9 +155,12 @@ function showPokemon(){
  * @param {object} pokemon 
  */
 function choosePokemon( pokemon ) {
+    let errText = document.querySelector('.error');
+    errText.textContent = "";
     if ( pokemon.style.borderColor === '' || pokemon.style.borderColor === 'rgb(255, 255, 255)' ) {
         if ( chosenAmount() > 1 ) {
             console.log('You cannot choose');
+            errText.textContent = "You can choose only 2 pokémons";
         } else {
             pokemon.style.borderColor = '#FFD057';
         }
@@ -208,18 +213,25 @@ function attack1() {
     }
 }
 
+/**
+ * Блокировка второй атаки
+ */
 function unableAtk() {
     atkTimer = 1;
     document.querySelector('#atk-2').style.opacity = 0.5;
     document.querySelector('.timeout').style.visibility = 'visible';
-    document.querySelector('#attack-2').removeEventListener('click', attack2);
+    document.querySelector('.timeout').style.opacity = 1.0;
+    document.querySelector('#atk-2').style.cursor = 'not-allowed';
 }
 
+/**
+ * Разблокировка второй атаки
+ */
 function ableAtk() {
     atkTimer = 0;
     document.querySelector('#atk-2').style.opacity = 1.0;
     document.querySelector('.timeout').style.visibility = 'hidden';
-    document.querySelector('#attack-2').addEventListener('click', attack2);
+    document.querySelector('#atk-2').style.cursor = 'pointer';
 }
 
 /**

@@ -34,14 +34,22 @@ h1 {
     color: #FF922D;
 }
 
-.task-description, .end-description {
+.task-description, .end-description, .error {
     font-family: Bahnschrift;
     font-size: 36px;
     color: #000000;
 
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin-bottom: 32px;
+    text-align: center;
+}
+
+.error {
+    color: rgb(255, 72, 72);
+    font-size: 30px;
 }
 
 .end-description {

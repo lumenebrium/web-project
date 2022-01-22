@@ -6,9 +6,13 @@ function makeMainPage() {
     let taskDescr = document.createElement('div');
     taskDescr.className = "task-description";
     header.after(taskDescr);
-    let taskText = document.createElement('p');
+    let taskText = document.createElement('div');
     taskText.textContent = "Choose your pokémon";
     taskDescr.prepend(taskText);
+    let errText = document.createElement('div');
+    errText.className = "error";
+    errText.textContent = "";
+    taskDescr.append(errText);
 
     let chooseContent = document.createElement('div');
     chooseContent.className = "choose-content";
