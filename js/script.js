@@ -1,10 +1,10 @@
 import { Pokemon, pokemons, playerParty, enemyParty, nextPokemon } from './pokemons.js';
 import { delMainPage, makeBattlePage, delBattlePage, makeEndPage, delEndPage } from './pages.js';
-import { attack1, attack2, ableAtk, ableAtkEnemy  } from './pages.js';
+import { attack1, attack2, ableAtk, ableAtkEnemy, atkTimer, atkTimerEnemy  } from './attaks.js';
 
 export let playerPokemon;
 export let enemyPokemon;
-let finishedGame;
+export let finishedGame;
 
 export function addMainListeners() {
     // Выбор конкретных покемонов
@@ -113,7 +113,7 @@ function initGame() {
 /**
  * Вывод актуальных данных текущих покемонов
  */
-function showPokemon(){
+export function showPokemon(){
     const pokemonsImg = document.querySelectorAll( '.player-img' );
     let newSrc1 = 'images/' + playerPokemon.name + '.png';
     let newSrc2 = 'images/' + enemyPokemon.name + '.png';

@@ -1,9 +1,8 @@
-import { playerPokemon, enemyPokemon } from './pokemons.js';
-import { addListeners, removeListeners, showPokemon, finishedGame } from './script.js';
+import { playerPokemon, enemyPokemon, addListeners, removeListeners, showPokemon, finishedGame } from './script.js';
 
 // Вторая атака осуществляется раз в два хода
-let atkTimer = 0;
-let atkTimerEnemy = 0;
+export let atkTimer = 0;
+export let atkTimerEnemy = 0;
 
 /**
  * Проведение первой атаки
@@ -43,7 +42,7 @@ function unableAtk() {
 /**
  * Разблокировка второй атаки
  */
-function ableAtk() {
+export function ableAtk() {
     atkTimer = 0;
     document.querySelector('#atk-2').style.opacity = 1.0;
     document.querySelector('.timeout').style.visibility = 'hidden';
@@ -64,7 +63,7 @@ function ableAtk() {
 /**
  * Разблокировка второй атаки
  */
-function ableAtkEnemy() {
+ export function ableAtkEnemy() {
     atkTimerEnemy = 0;
     document.querySelector('#atk-4').style.opacity = 1.0;
     document.querySelectorAll('.timeout')[1].style.visibility = 'hidden';
