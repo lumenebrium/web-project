@@ -1,5 +1,5 @@
 import { Move, tackle, vineWhip, scratch, ember, rapidSpin, pound, waterGun } from './moves.js';
-import { changePokemon, endGame } from './main.js';
+import { changePokemon, endGame } from './script.js';
 
 export class Pokemon {
     /** @type {string} */
