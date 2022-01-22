@@ -188,34 +188,6 @@ function chosenAmount() {
 
     return amount;
 }
-
-    /**
-     * Ищет следующего покемона
-     * @param {Pokemon} currentPokemon 
-     * @param {Array} party 
-     * @returns следующий текущий покемон
-     */
-    /*
-     function nextPokemon( currentPokemon, party ) {
-		let foundPokemon = false;
-		console.log('Next pokemon');
-		for ( const pokemon of party ) {
-			if ( pokemon.isAlive() ) {
-				foundPokemon = true;
-				currentPokemon = pokemon;
-				console.log('Found next pokemon - ' + currentPokemon.name);
-				break;
-			}
-		}
-		if ( foundPokemon === false ) {
-            console.log('There is no pokemon');
-            if (this.owner === 'enemy')
-			    endGame(1);
-            else endGame(0);
-		}
-		
-        return currentPokemon;
-	}*/
    
 export function changePokemon( pokemon ) {
 	if ( pokemon.owner === 'player' ) {
