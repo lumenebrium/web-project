@@ -1,4 +1,7 @@
-class Pokemon {
+import { Move, tackle, vineWhip, scratch, ember, rapidSpin, pound, waterGun } from './moves.js';
+import { changePokemon, endGame } from './main.js';
+
+export class Pokemon {
     /** @type {string} */
     name;
     /** @type {string} */
@@ -83,6 +86,8 @@ class Pokemon {
         console.log('damage = ' + damage);
         this.hp -= damage;
         if ( this.hp <= 0 ) {
+            changePokemon(this);
+            /*
 			if ( this.owner === 'player' ) {
                 console.log('Player need next pokemon');
 				playerPokemon = this.nextPokemon(playerPokemon, playerParty);
@@ -90,7 +95,7 @@ class Pokemon {
 			if ( this.owner === 'enemy' ) {
                 console.log('Enemy need next pokemon');
 				enemyPokemon = this.nextPokemon(enemyPokemon, enemyParty);
-			}
+			}*/
 		}
     }
 
@@ -115,13 +120,16 @@ class Pokemon {
 		}
 	}
 
+}
+
     /**
      * Ищет следующего покемона
      * @param {Pokemon} currentPokemon 
      * @param {Array} party 
      * @returns следующий текущий покемон
      */
-    nextPokemon( currentPokemon, party ) {
+    
+    export function nextPokemon( currentPokemon, party ) {
 		let foundPokemon = false;
 		console.log('Next pokemon');
 		for ( const pokemon of party ) {
@@ -134,15 +142,13 @@ class Pokemon {
 		}
 		if ( foundPokemon === false ) {
             console.log('There is no pokemon');
-            if (this.owner === 'enemy')
+            if (currentPokemon.owner === 'enemy')
 			    endGame(1);
             else endGame(0);
 		}
 		
         return currentPokemon;
 	}
-}
-
 /**
  * Определяет влияние взаимодействия типов покемонов
  * @param {Pokemon} attacker 
@@ -204,7 +210,7 @@ function calcCriticalHit( attacker ) {
     }
 }
 
-const pokemons = [];
+export const pokemons = [];
 pokemons.push( new Pokemon( "Fennekin", "fire", 240, 45, 40, 60, [scratch, ember] ) );
 pokemons.push( new Pokemon( "Snivy", "grass", 245, 45, 55, 63, [tackle, vineWhip] ) );
 pokemons.push( new Pokemon( "Piplup", "water", 253, 51, 53, 40, [pound, waterGun] ) );
@@ -225,5 +231,5 @@ function write() {
 write();
 */
 
-let playerParty = [];
-let enemyParty = [];
+export let playerParty = [];
+export let enemyParty = [];

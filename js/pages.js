@@ -1,6 +1,4 @@
-// Модуль pages
-
-function makeMainPage() {
+export function makeMainPage() {
     let header = document.querySelector('.header');
 
     let taskDescr = document.createElement('div');
@@ -128,7 +126,7 @@ function makeMainPage() {
     chooseContent.after(btnDiv);
 }
 
-function delMainPage() {
+export function delMainPage() {
     let taskDescr = document.querySelector('.task-description');
     taskDescr.remove();
     let chooseContent = document.querySelector('.choose-content');
@@ -137,7 +135,7 @@ function delMainPage() {
     btnDiv.remove();
 }
 
-function makeBattlePage() {
+export function makeBattlePage() {
     let header = document.querySelector('.header');
 
     let battleContent = document.createElement('div');
@@ -309,12 +307,12 @@ function makeBattlePage() {
     atk.append(timeoutImg);
 }
 
-function delBattlePage() {
+export function delBattlePage() {
     let battleContent = document.querySelector('.battle-content');
     battleContent.remove();
 }
 
-function makeEndPage() {
+export function makeEndPage() {
     let header = document.querySelector('.header');
 
     let taskDescr = document.createElement('div');
@@ -329,4 +327,11 @@ function makeEndPage() {
     btnDiv.className = "btn";
     btnDiv.innerHTML = "<input type=\"button\" class=\"again-btn\" value=\"TRY AGAIN\">";
     taskDescr.after(btnDiv);
+}
+
+export function delEndPage() {
+    let endContent = document.querySelector('.end-description');
+    endContent.remove();
+    let btn = document.querySelector('.btn');
+    btn.remove();
 }

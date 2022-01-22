@@ -1,7 +1,10 @@
-'use strict';
-
-let playerPokemon;
-let enemyPokemon;
+import { Pokemon, pokemons, playerParty, enemyParty, nextPokemon } from './pokemons.js';
+import { makeMainPage, delMainPage, makeBattlePage, delBattlePage, makeEndPage, delEndPage } from './pages.js';
+/*
+export let playerParty = [];
+export let enemyParty = [];*/
+export let playerPokemon;
+export let enemyPokemon;
 let finishedGame;
 
 // Создание страницы с выбором покемонов
@@ -186,8 +189,48 @@ function chosenAmount() {
     return amount;
 }
 
+    /**
+     * Ищет следующего покемона
+     * @param {Pokemon} currentPokemon 
+     * @param {Array} party 
+     * @returns следующий текущий покемон
+     */
+    /*
+     function nextPokemon( currentPokemon, party ) {
+		let foundPokemon = false;
+		console.log('Next pokemon');
+		for ( const pokemon of party ) {
+			if ( pokemon.isAlive() ) {
+				foundPokemon = true;
+				currentPokemon = pokemon;
+				console.log('Found next pokemon - ' + currentPokemon.name);
+				break;
+			}
+		}
+		if ( foundPokemon === false ) {
+            console.log('There is no pokemon');
+            if (this.owner === 'enemy')
+			    endGame(1);
+            else endGame(0);
+		}
+		
+        return currentPokemon;
+	}*/
+   
+export function changePokemon( pokemon ) {
+	if ( pokemon.owner === 'player' ) {
+        console.log('Player need next pokemon');
+		playerPokemon = nextPokemon(playerPokemon, playerParty);
+	}
+	if ( pokemon.owner === 'enemy' ) {
+        console.log('Enemy need next pokemon');
+		enemyPokemon = nextPokemon(enemyPokemon, enemyParty);
+	}
+}
+
 // Вторая атака осуществляется раз в два хода
 let atkTimer = 0;
+let atkTimerEnemy = 0;
 
 /**
  * Проведение первой атаки
@@ -235,6 +278,27 @@ function ableAtk() {
 }
 
 /**
+ * Блокировка второй атаки
+ */
+ function unableAtkEnemy() {
+    atkTimerEnemy = 1;
+    document.querySelector('#atk-4').style.opacity = 0.5;
+    document.querySelectorAll('.timeout')[1].style.visibility = 'visible';
+    document.querySelectorAll('.timeout')[1].style.opacity = 1.0;
+    document.querySelector('#atk-4').style.cursor = 'not-allowed';
+}
+
+/**
+ * Разблокировка второй атаки
+ */
+function ableAtkEnemy() {
+    atkTimerEnemy = 0;
+    document.querySelector('#atk-4').style.opacity = 1.0;
+    document.querySelectorAll('.timeout')[1].style.visibility = 'hidden';
+    document.querySelector('#atk-4').style.cursor = 'pointer';
+}
+
+/**
  * Проведение второй атаки
  */
  function attack2() {
@@ -263,8 +327,17 @@ function ableAtk() {
 /**
  * Проведение атаки врага
  */
-function enemyAttack() {
-	const attackMove = Math.floor(Math.random() * enemyPokemon.moves.length);
+ function enemyAttack() {
+	let attackMove = Math.floor(Math.random() * enemyPokemon.moves.length);
+    if ( attackMove === 1 && atkTimerEnemy === 0 ) {
+        atkTimerEnemy = 1;
+        unableAtkEnemy();
+    } else if ( attackMove === 0 ) {
+        if ( atkTimerEnemy === 1 ) ableAtkEnemy();
+    } else if ( attackMove === 1 && atkTimerEnemy === 1 ) {
+        attackMove = 0;
+        ableAtkEnemy();
+    }
 	console.log('Enemy attacked with ' + enemyPokemon.moves[attackMove].name);
 	enemyPokemon.attack(playerPokemon, enemyPokemon.moves[attackMove]);
     if ( !finishedGame ) {
@@ -283,7 +356,7 @@ function enemyAttack() {
  * конец игры
  * @param {boolean} isWin 
  */
-function endGame( isWin ) {
+export function endGame( isWin ) {
     finishedGame = 1;
     removeListeners();
 	delBattlePage();
@@ -297,5 +370,5 @@ function endGame( isWin ) {
     }
     endDescr.prepend(endText);
     const  againBtn = document.querySelector( '.again-btn' );
-    againBtn.addEventListener( "click", () => { window.location = 'index.html' });
+    againBtn.addEventListener( "click", () => { window.location = 'index.html'; delEndPage() });
 }

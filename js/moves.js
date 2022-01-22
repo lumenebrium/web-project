@@ -1,4 +1,4 @@
-class Move {
+export class Move {
     /** @type {string} */
     name;
     /** @type {number} */
@@ -27,17 +27,17 @@ class Move {
 }
 
 // Snivy
-const tackle = new Move( 'Tackle', 40, 1.0, 'enemy');
-const vineWhip = new Move( 'Vine Whip', 45, 1.0, 'enemy');
+export const tackle = new Move( 'Tackle', 40, 1.0, 'enemy');
+export const vineWhip = new Move( 'Vine Whip', 45, 1.0, 'enemy');
 
 // Fennekin
-const scratch = new Move( 'Scratch', 40, 1.0, 'enemy');
-const ember = new Move( 'Ember', 45, 1.0, 'enemy');
+export const scratch = new Move( 'Scratch', 40, 1.0, 'enemy');
+export const ember = new Move( 'Ember', 45, 1.0, 'enemy');
 
 // Bergmite
 // const tackle = new Move( 'Tackle', 40, 1.0, 'enemy');
-const rapidSpin = new Move( 'Rapid Spin', 45, 1.0, 'enemy');
+export const rapidSpin = new Move( 'Rapid Spin', 45, 1.0, 'enemy');
 
 // Piplup
-const pound = new Move( 'Pound', 40, 1.0, 'enemy');
-const waterGun = new Move( 'Water Gun', 45, 1.0, 'enemy');
+export const pound = new Move( 'Pound', 40, 1.0, 'enemy');
+export const waterGun = new Move( 'Water Gun', 45, 1.0, 'enemy');
