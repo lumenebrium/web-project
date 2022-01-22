@@ -193,10 +193,12 @@ export function changePokemon( pokemon ) {
 	if ( pokemon.owner === 'player' ) {
         console.log('Player need next pokemon');
 		playerPokemon = nextPokemon(playerPokemon, playerParty);
+        if ( atkTimer) ableAtk();
 	}
 	if ( pokemon.owner === 'enemy' ) {
         console.log('Enemy need next pokemon');
 		enemyPokemon = nextPokemon(enemyPokemon, enemyParty);
+        if ( atkTimerEnemy) ableAtkEnemy();
 	}
 }
 

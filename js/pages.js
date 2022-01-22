@@ -5,7 +5,7 @@ export function makeMainPage() {
     taskDescr.className = "task-description";
     header.after(taskDescr);
     let taskText = document.createElement('div');
-    taskText.textContent = "Choose your pokémon";
+    taskText.textContent = "Choose your pokémons";
     taskDescr.prepend(taskText);
     let errText = document.createElement('div');
     errText.className = "error";
