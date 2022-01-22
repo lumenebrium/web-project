@@ -1,0 +1,137 @@
+@keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+
+body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    min-width: 440px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto 46px;
+    cursor: pointer;
+}
+
+h1, p {
+    margin: 0;
+}
+
+h1 {
+    font-family: Showcard Gothic;
+    font-size: 48px;
+    color: #FF922D;
+}
+
+.task-description, .end-description {
+    font-family: Bahnschrift;
+    font-size: 36px;
+    color: #000000;
+
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.end-description {
+    font-size: 68px;
+}
+
+.choose-content{
+    max-width: 940px;
+    display: flex;
+    justify-content: space-around;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.choose-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 5px 0 10px;
+    margin-bottom: 60px;
+    border: 3px solid #fff;
+    box-sizing: border-box;
+    border-radius: 20px;
+    /* border-style: hidden;*/
+    cursor: pointer;
+}
+
+.pokemon-img {
+    width: 160px;
+    height: 160px;
+}
+
+.pokemon-name {
+    margin-top: 18px;
+    font-family: Bahnschrift;
+    font-size: 24px;
+    color: #000000;
+}
+
+.pokemon-type {
+    width: 100px;
+    height: 35px;
+    margin-top: 30px;
+    background: #FF462D;
+    border: 3px solid #FF8F80;
+    box-sizing: border-box;
+    border-radius: 20px;
+
+    font-family: Bahnschrift;
+    font-size: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#type-grass {
+    background: #46C531;
+    border: 3px solid #90E882;
+}
+
+#type-water {
+    background: #2D81FF;
+    border: 3px solid #7BB0FF;
+}
+
+#type-ice {
+    background: #2DCDFF;
+    border: 3px solid #81DFFD;
+}
+
+.btn {
+    font-family: Bahnschrift;
+    font-size: 36px;
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.ready-btn, .again-btn {
+    cursor: pointer;
+    color: #fff;
+	font-size: 34px;
+    padding: 7px 12px;
+    background-color: #FF922D;
+	border: 3px solid #FFD057;
+    box-sizing: border-box;
+    border-radius: 20px;
+}

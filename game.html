@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/battle.css">
+    <title>Game</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Pokémon Battle</h1>
+    </div>
+    <div class="battle-content">
+        <div class="block-content">
+            <div class="pokemon-player" id="p1">
+                <img class="player-img" src="images/fennekin.png">
+                <p class="player-name">Fennekin</p>
+                <div class="player-type" id="type-fire">
+                    <span class="player-type-name">FIRE</span>
+                </div>
+            </div>
+            <div class="hp-info">
+                <span class="hp-name">HP</span>
+                <div class="player-hp-info">
+                    <div id="player-hp-bar"></div>
+                    <span id="player-hp-amount">40/100</span>
+                </div>
+            </div>
+            <div class="attack">
+                <img id="attack-1-img" src="images/punch.png">
+                <div id="attack-1">Scratch</div>
+            </div>
+            <div class="attack">
+                <img id="attack-2-img" src="images/fire.png">
+                <div id="attack-2">Ember</div>
+                <img class="timeout" src="images/clock.png">
+            </div>
+        </div>
+        <div class="vs-text"><span>VS</span></div>
+        <div class="block-content">
+            <div class="pokemon-player" id="p2">
+                <img class="player-img" src="images/snivy.png">
+                <p class="player-name">Snivy</p>
+                <div class="player-type" id="type-grass">
+                    <span class="player-type-name">GRASS</span>
+                </div>
+            </div>
+            <div class="hp-info">
+                <span class="hp-name">HP</span>
+                <div class="player-hp-info">
+                    <div id="enemy-hp-bar"></div>
+                    <span id="enemy-hp-amount">40/100</span>
+                </div>
+            </div>
+            <div class="attack" id="atk-3">
+                <img id="attack-3-img" src="images/punch.png">
+                <div id="attack-3">Scratch</div>
+            </div>
+            <div class="attack" id="atk-4">
+                <img id="attack-4-img" src="images/fire.png">
+                <div id="attack-4">Ember</div>
+                <img class="timeout" src="images/clock.png">
+            </div>
+        </div>
+    </div>
+    <script src="js/moves.js"></script>
+    <script src="js/pokemons.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
