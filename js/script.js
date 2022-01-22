@@ -18,8 +18,10 @@ export function addMainListeners() {
 }
 
 export function addListeners() {
-	document.querySelector('#attack-1').addEventListener('click', attack1);
-	document.querySelector('#attack-2').addEventListener('click', attack2);
+    if ( document.querySelectorAll('.attack').length > 0 ) {
+        document.querySelector('#attack-1').addEventListener('click', attack1);
+        document.querySelector('#attack-2').addEventListener('click', attack2);
+    }
 }
 
 export function removeListeners() {
